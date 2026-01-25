@@ -1,0 +1,47 @@
+/* PAGE BACKGROUND & TEXT */
+body {
+  background-color: #ffd6e0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+}
+
+h1 {
+  color: #c9184a;
+}
+
+/* BUTTON STYLING */
+button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.yes-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.no-button {
+  background-color: #e63946;
+  color: white;
+  margin-left: 10px;
+}
+
+/* GIF — HIDDEN UNTIL SECOND CLICK */
+.gif {
+  width: 180px;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+.top-image {
+  width: 220px;
+  margin-bottom: 20px;
+}
+
