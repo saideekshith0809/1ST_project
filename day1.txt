@@ -1,0 +1,1 @@
+Day 1: I successfully cloned my first GitHub repository
