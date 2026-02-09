@@ -1,24 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Valentine?</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- GIF that shows only on the 2nd NO click -->
-  <img id="reactionGif" src="gifs/no.gif" class="gif hidden">
-  <h1>Will you be my Valentine?</h1>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
 
-  <div class="buttons">
-    <button class="yes-button" onclick="handleYesClick()">Yes</button>
-    <button class="no-button" onclick="handleNoClick()">NO</button>
-  </div>
+    <!-- MAGICAL ANIMATED BACKGROUND -->
+    <div class="magic-bg">
+      <!-- Floating hearts -->
+      <div class="floating-hearts">
+        <div class="heart-shape"></div>
+        <div class="heart-shape"></div>
+        <div class="heart-shape"></div>
+        <div class="heart-shape"></div>
+        <div class="heart-shape"></div>
+        <div class="heart-shape"></div>
+        <div class="heart-shape"></div>
+        <div class="heart-shape"></div>
+      </div>
+      
+      <!-- Glowing particles -->
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      
+      <!-- Animated gradient overlay -->
+      <div class="gradient-overlay"></div>
+      
+      <!-- Sparkle stars -->
+      <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+      </div>
+    </div>
 
+    <!-- FLOWERS CONTAINER FOR INDEX PAGE -->
+    <div id="flowers-container"></div>
 
+    <div class="content-wrapper">
+      <img id="reactionGif" src="gifs/no.gif" class="gif hidden">
 
-  <script src="script.js"></script>
-</body>
-</html>
+      <h1 class="magical-title">Will you be my Valentine?</h1>
 
+      <div class="buttons">
+        <button class="yes-button" onclick="handleYesClick()">Yes</button>
+        <button class="no-button" onclick="handleNoClick()">No(edhi nokodhuuu)</button>
+      </div>
+    </div>
 
+    <script src="script.js"></script>
+  </body>
+  </html>
