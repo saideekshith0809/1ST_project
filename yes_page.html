@@ -2,18 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>YAY ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YES ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="yes-page">
 
-  <h1>I KNEW🥰💖</h1>
-  <h2>YOU WOULD SAY YES!
-  </h2>
+  <!-- MAGICAL ANIMATED BACKGROUND -->
+  <div class="magic-bg">
+    <!-- Floating hearts -->
+    <div class="floating-hearts">
+      <div class="heart-shape"></div>
+      <div class="heart-shape"></div>
+      <div class="heart-shape"></div>
+      <div class="heart-shape"></div>
+      <div class="heart-shape"></div>
+      <div class="heart-shape"></div>
+      <div class="heart-shape"></div>
+      <div class="heart-shape"></div>
+    </div>
+    
+    <!-- Glowing particles -->
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    
+    <!-- Animated gradient overlay -->
+    <div class="gradient-overlay"></div>
+    
+    <!-- Sparkle stars -->
+    <div class="stars">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+  </div>
 
-  <!-- Show the hugging GIF here -->
-  <img src="gifs/yes.gif" class="yes-gif">
+  <div class="content-wrapper">
+    <div class="love-text">
+      <h1>I KNEW IT 🥰💖</h1>
+      <h2 id="typingText"></h2>
+      <h3>I LOVE YOUUUU ❤️❤️🫶🫶🫶</h3>
+    </div>
+
+    <img src="gifs/yes.gif" class="yes-gif">
+  </div>
+
+  <!-- FLOWERS / HEARTS -->
+  <div id="flowers-container"></div>
+
+  <script>
+    const container = document.getElementById("flowers-container");
+    const emojis = ["🌸", "🌹", "🌺", "💐", "🌼", "🌷", "❤️‍🩹", "💗", "❤️", "💕", "💖", "🏵️"];
+    const confettiColors = ["#ff4d6d", "#ff85a1", "#ffc2d1", "#4CAF50", "#FFD700", "#FF69B4", "#ff1493"];
+
+    let flowersStarted = false;
+
+    // TYPING EFFECT FOR TELUGU TEXT
+    const teluguText = "Nuvu YES chepthav ani naaku telusu 😌";
+    const typingElement = document.getElementById("typingText");
+    let charIndex = 0;
+
+    function typeText() {
+      if (charIndex < teluguText.length) {
+        typingElement.textContent += teluguText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeText, 80);
+      }
+    }
+
+    setTimeout(typeText, 2000);
+
+    // CONFETTI BURST ON LOAD
+    function createConfetti() {
+      for (let i = 0; i < 150; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+          confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
+          confetti.style.width = (5 + Math.random() * 10) + "px";
+          confetti.style.height = (5 + Math.random() * 10) + "px";
+          confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
+          container.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 4000);
+        }, i * 10);
+      }
+    }
+
+    // SPARKLE EFFECT AT BOTTOM
+    function createSparkle(x) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.textContent = "✨";
+      sparkle.style.left = x + "px";
+      sparkle.style.top = window.innerHeight - 50 + "px";
+      container.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    }
+
+    // CREATE FLOWER WITH WIND & ROTATION
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const startX = Math.random() * 100;
+      flower.style.left = startX + "vw";
+
+      const isBig = Math.random() > 0.6;
+      const fontSize = isBig
+        ? 60 + Math.random() * 30
+        : 24 + Math.random() * 16;
+      flower.style.fontSize = fontSize + "px";
+
+      const duration = isBig
+        ? 8 + Math.random() * 4
+        : 4 + Math.random() * 2;
+
+      const rotationDirection = Math.random() > 0.5 ? 1 : -1;
+      const rotationAmount = 180 + Math.random() * 360;
+
+      const windAmount = 50 + Math.random() * 100;
+      const windDirection = Math.random() > 0.5 ? 1 : -1;
+
+      const animName = `fall-${Date.now()}-${Math.random()}`;
+      flower.style.animation = `${animName} ${duration}s linear forwards`;
+
+      const styleSheet = document.styleSheets[0];
+      const keyframes = `
+        @keyframes ${animName} {
+          0% {
+            transform: translateY(0) translateX(0) rotate(0deg);
+            opacity: 1;
+          }
+          50% {
+            transform: translateY(50vh) translateX(${windDirection * windAmount}px) rotate(${rotationDirection * rotationAmount / 2}deg);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(120vh) translateX(0) rotate(${rotationDirection * rotationAmount}deg);
+            opacity: 0;
+          }
+        }
+      `;
+      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+      container.appendChild(flower);
+
+      setTimeout(() => {
+        const rect = flower.getBoundingClientRect();
+        if (rect.top > window.innerHeight - 100) {
+          createSparkle(rect.left + rect.width / 2);
+        }
+        flower.remove();
+      }, duration * 1000);
+    }
+
+    // START CONFETTI IMMEDIATELY
+    createConfetti();
+
+    // START FLOWERS AFTER 3 SECONDS
+    setTimeout(() => {
+      flowersStarted = true;
+      setInterval(createFlower, 250);
+    }, 3000);
+  </script>
 
 </body>
 </html>
-
