@@ -34,66 +34,78 @@ function handleNoClick() {
   }
 }
 
-function handleYesClick() {
-  window.location.href = "yes_page.html";
+function handleYesHover() {
+  // Time slows when hovering YES
+  document.body.classList.add('time-slow');
+  
+  // Intensify love aura
+  const aura = document.querySelector('.love-aura');
+  if (aura) {
+    aura.style.transform = 'scale(1.5)';
+    aura.style.opacity = '0.8';
+  }
 }
 
-// ========= FLOWERS FALLING ON INDEX PAGE =========
-const container = document.getElementById("flowers-container");
-const emojis = ["🌸", "🌹", "🌺", "💐", "🌼", "🌷", "💗", "❤️", "💕", "💖"];
+function handleYesClick() {
+  // Emotional transition - time stops
+  document.body.classList.add('time-freeze');
+  
+  // Transition to warm colors
+  document.body.classList.add('love-bloom');
+  
+  setTimeout(() => {
+    window.location.href = "yes_page.html";
+  }, 1000);
+}
 
-function createFlower() {
-  const flower = document.createElement("div");
-  flower.className = "flower";
-  flower.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
-  const startX = Math.random() * 100;
-  flower.style.left = startX + "vw";
-
-  const isBig = Math.random() > 0.6;
-  const fontSize = isBig
-    ? 50 + Math.random() * 25
-    : 20 + Math.random() * 15;
-  flower.style.fontSize = fontSize + "px";
-
-  const duration = isBig
-    ? 10 + Math.random() * 5
-    : 6 + Math.random() * 3;
-
-  const rotationDirection = Math.random() > 0.5 ? 1 : -1;
-  const rotationAmount = 180 + Math.random() * 360;
-
-  const windAmount = 40 + Math.random() * 80;
-  const windDirection = Math.random() > 0.5 ? 1 : -1;
-
-  const animName = `fall-${Date.now()}-${Math.random()}`;
-  flower.style.animation = `${animName} ${duration}s linear forwards`;
-
-  const styleSheet = document.styleSheets[0];
-  const keyframes = `
-    @keyframes ${animName} {
-      0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0.9;
-      }
-      50% {
-        transform: translateY(50vh) translateX(${windDirection * windAmount}px) rotate(${rotationDirection * rotationAmount / 2}deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(120vh) translateX(0) rotate(${rotationDirection * rotationAmount}deg);
-        opacity: 0;
+// Create destiny lines connecting elements
+function createDestinyLines() {
+  const svg = document.querySelector('.destiny-lines');
+  const hearts = document.querySelectorAll('.destiny-heart');
+  const stars = document.querySelectorAll('.destiny-star');
+  
+  function updateLines() {
+    // Clear existing lines
+    while (svg.children.length > 1) { // Keep gradient def
+      svg.removeChild(svg.lastChild);
+    }
+    
+    // Connect hearts and stars with destiny lines
+    const elements = [...hearts, ...stars];
+    for (let i = 0; i < elements.length - 1; i++) {
+      if (Math.random() > 0.5) {
+        const elem1 = elements[i].getBoundingClientRect();
+        const elem2 = elements[i + 1].getBoundingClientRect();
+        
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', elem1.left + elem1.width / 2);
+        line.setAttribute('y1', elem1.top + elem1.height / 2);
+        line.setAttribute('x2', elem2.left + elem2.width / 2);
+        line.setAttribute('y2', elem2.top + elem2.height / 2);
+        line.setAttribute('stroke', 'url(#lineGradient)');
+        line.setAttribute('stroke-width', '1');
+        line.style.opacity = '0.3';
+        svg.appendChild(line);
       }
     }
-  `;
-  styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-
-  container.appendChild(flower);
-
-  setTimeout(() => {
-    flower.remove();
-  }, duration * 1000);
+  }
+  
+  updateLines();
+  setInterval(updateLines, 3000);
 }
 
-// Start flowers immediately on index page
-setInterval(createFlower, 400);
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  createDestinyLines();
+  
+  // Remove time-slow effect when mouse leaves YES button
+  const yesButton = document.querySelector('.yes-button');
+  yesButton.addEventListener('mouseleave', function() {
+    document.body.classList.remove('time-slow');
+    const aura = document.querySelector('.love-aura');
+    if (aura) {
+      aura.style.transform = 'scale(1)';
+      aura.style.opacity = '0.5';
+    }
+  });
+});
