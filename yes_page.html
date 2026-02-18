@@ -6,81 +6,72 @@
   <title>YES ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="yes-page">
+<body class="yes-page destiny-scene">
 
-  <!-- MAGICAL ANIMATED BACKGROUND -->
-  <div class="magic-bg">
-    <!-- Floating hearts -->
-    <div class="floating-hearts">
-      <div class="heart-shape"></div>
-      <div class="heart-shape"></div>
-      <div class="heart-shape"></div>
-      <div class="heart-shape"></div>
-      <div class="heart-shape"></div>
-      <div class="heart-shape"></div>
-      <div class="heart-shape"></div>
-      <div class="heart-shape"></div>
+  <!-- CELEBRATORY BACKGROUND -->
+  <div class="destiny-background">
+    <!-- Love aura celebrating -->
+    <div class="love-aura" style="transform: translate(-50%, -50%) scale(2); opacity: 0.9;"></div>
+    
+    <!-- Destiny hearts -->
+    <div class="destiny-hearts">
+      <div class="destiny-heart"></div>
+      <div class="destiny-heart"></div>
+      <div class="destiny-heart"></div>
+      <div class="destiny-heart"></div>
+      <div class="destiny-heart"></div>
     </div>
     
-    <!-- Glowing particles -->
-    <div class="particles">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
+    <!-- Memory particles -->
+    <div class="memory-particles">
+      <div class="memory-particle">💌</div>
+      <div class="memory-particle">✨</div>
+      <div class="memory-particle">🌸</div>
+      <div class="memory-particle">💗</div>
+      <div class="memory-particle">📝</div>
+      <div class="memory-particle">⭐</div>
     </div>
     
-    <!-- Animated gradient overlay -->
-    <div class="gradient-overlay"></div>
-    
-    <!-- Sparkle stars -->
-    <div class="stars">
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
+    <!-- Stars -->
+    <div class="destiny-stars">
+      <div class="destiny-star"></div>
+      <div class="destiny-star"></div>
+      <div class="destiny-star"></div>
+      <div class="destiny-star"></div>
+      <div class="destiny-star"></div>
+      <div class="destiny-star"></div>
+      <div class="destiny-star"></div>
+      <div class="destiny-star"></div>
     </div>
+    
+    <!-- Emotional gradient -->
+    <div class="emotional-gradient" style="opacity: 0.9;"></div>
   </div>
 
   <div class="content-wrapper">
     <div class="love-text">
-      <h1>I KNEW IT 🥰💖</h1>
+      <h1>I KNEW!!!!..🥰💖</h1>
       <h2 id="typingText"></h2>
-      <h3>I LOVE YOUUUU ❤️❤️🫶🫶🫶</h3>
+      <h3>I LOVE YOUUUU❤️❤️🫶🫶🫶</h3>
     </div>
 
     <img src="gifs/yes.gif" class="yes-gif">
   </div>
 
-  <!-- FLOWERS / HEARTS -->
+  <!-- FLOWERS CONTAINER -->
   <div id="flowers-container"></div>
 
   <script>
+    console.log("YES PAGE LOADED - Starting flower animation!");
+    
     const container = document.getElementById("flowers-container");
-    const emojis = ["🌸", "🌹", "🌺", "💐", "🌼", "🌷", "❤️‍🩹", "💗", "❤️", "💕", "💖", "🏵️"];
-    const confettiColors = ["#ff4d6d", "#ff85a1", "#ffc2d1", "#4CAF50", "#FFD700", "#FF69B4", "#ff1493"];
+    console.log("Flowers container found:", container);
+    
+    const emojis = ["🌸", "🌹", "🌺", "💐", "🌼", "🌷", "❤️", "💗", "💕", "💖", "🥀", "🏵️", "✨", "⭐", "🌻", "💝", "🌺", "🏵️"];
+    const confettiColors = ["#ff4d6d", "#ff85a1", "#ffc2d1", "#4CAF50", "#FFD700", "#FF69B4", "#ff1493", "#ffd700"];
 
-    let flowersStarted = false;
-
-    // TYPING EFFECT FOR TELUGU TEXT
-    const teluguText = "Nuvu YES chepthav ani naaku telusu 😌";
+    // TYPING EFFECT
+    const teluguText = "Nuvu YES chepthav ani naaku telusu heheheheeee😁😁😌";
     const typingElement = document.getElementById("typingText");
     let charIndex = 0;
 
@@ -94,53 +85,70 @@
 
     setTimeout(typeText, 2000);
 
-    // CONFETTI BURST ON LOAD
+    // CONFETTI BURST
     function createConfetti() {
-      for (let i = 0; i < 150; i++) {
+      console.log("Creating confetti burst!");
+      for (let i = 0; i < 200; i++) {
         setTimeout(() => {
           const confetti = document.createElement("div");
           confetti.className = "confetti";
+          confetti.style.position = "absolute";
           confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.top = "-20px";
           confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-          confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
           confetti.style.width = (5 + Math.random() * 10) + "px";
           confetti.style.height = (5 + Math.random() * 10) + "px";
           confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
+          confetti.style.zIndex = "1000";
+          confetti.style.pointerEvents = "none";
+          
+          const duration = 2 + Math.random() * 2;
+          confetti.style.animation = `confettiFall ${duration}s linear forwards`;
+          
           container.appendChild(confetti);
-          setTimeout(() => confetti.remove(), 4000);
-        }, i * 10);
+          setTimeout(() => confetti.remove(), duration * 1000);
+        }, i * 8);
       }
     }
 
-    // SPARKLE EFFECT AT BOTTOM
+    // SPARKLE EFFECT
     function createSparkle(x) {
       const sparkle = document.createElement("div");
       sparkle.className = "sparkle";
       sparkle.textContent = "✨";
+      sparkle.style.position = "absolute";
       sparkle.style.left = x + "px";
-      sparkle.style.top = window.innerHeight - 50 + "px";
+      sparkle.style.top = (window.innerHeight - 50) + "px";
+      sparkle.style.fontSize = "20px";
+      sparkle.style.zIndex = "1000";
+      sparkle.style.pointerEvents = "none";
+      sparkle.style.animation = "sparkleEffect 0.8s ease-out forwards";
       container.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 800);
     }
 
-    // CREATE FLOWER WITH WIND & ROTATION
+    // FLOWER CREATION - INFINITE FALLING
+    let flowerCount = 0;
     function createFlower() {
+      flowerCount++;
+      console.log("Creating flower #" + flowerCount);
+      
       const flower = document.createElement("div");
       flower.className = "flower";
       flower.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
-      const startX = Math.random() * 100;
-      flower.style.left = startX + "vw";
+      
+      flower.style.position = "absolute";
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.top = "-60px";
+      flower.style.zIndex = "999";
+      flower.style.pointerEvents = "none";
 
       const isBig = Math.random() > 0.6;
-      const fontSize = isBig
-        ? 60 + Math.random() * 30
-        : 24 + Math.random() * 16;
+      const fontSize = isBig ? 60 + Math.random() * 30 : 24 + Math.random() * 16;
       flower.style.fontSize = fontSize + "px";
 
-      const duration = isBig
-        ? 8 + Math.random() * 4
-        : 4 + Math.random() * 2;
+      // Big flowers fall slower, small flowers fall faster
+      const duration = isBig ? 8 + Math.random() * 4 : 4 + Math.random() * 2;
 
       const rotationDirection = Math.random() > 0.5 ? 1 : -1;
       const rotationAmount = 180 + Math.random() * 360;
@@ -148,11 +156,17 @@
       const windAmount = 50 + Math.random() * 100;
       const windDirection = Math.random() > 0.5 ? 1 : -1;
 
-      const animName = `fall-${Date.now()}-${Math.random()}`;
+      const uniqueId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+      const animName = `fall-${uniqueId}`;
+      
       flower.style.animation = `${animName} ${duration}s linear forwards`;
+      flower.style.textShadow = "0 0 5px rgba(255, 255, 255, 0.9), 0 0 10px rgba(255, 182, 193, 0.7), 0 0 15px rgba(255, 105, 180, 0.5)";
+      flower.style.filter = "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))";
+      flower.style.willChange = "transform";
 
-      const styleSheet = document.styleSheets[0];
-      const keyframes = `
+      const style = document.createElement('style');
+      style.setAttribute('data-anim', animName);
+      style.textContent = `
         @keyframes ${animName} {
           0% {
             transform: translateY(0) translateX(0) rotate(0deg);
@@ -168,9 +182,10 @@
           }
         }
       `;
-      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+      document.head.appendChild(style);
 
       container.appendChild(flower);
+      console.log("Flower #" + flowerCount + " added to container");
 
       setTimeout(() => {
         const rect = flower.getBoundingClientRect();
@@ -178,17 +193,38 @@
           createSparkle(rect.left + rect.width / 2);
         }
         flower.remove();
+        const styleToRemove = document.querySelector(`style[data-anim="${animName}"]`);
+        if (styleToRemove) styleToRemove.remove();
+        console.log("Flower #" + flowerCount + " removed");
       }, duration * 1000);
     }
 
     // START CONFETTI IMMEDIATELY
+    console.log("Starting confetti...");
     createConfetti();
 
-    // START FLOWERS AFTER 3 SECONDS
+    // START FLOWERS AFTER 3 SECONDS - INFINITE LOOP
     setTimeout(() => {
-      flowersStarted = true;
-      setInterval(createFlower, 250);
+      console.log("Starting infinite flower rain!");
+      
+      // Create first batch of flowers immediately
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => createFlower(), i * 200);
+      }
+      
+      // Then keep creating flowers every 200ms FOREVER
+      setInterval(() => {
+        createFlower();
+      }, 200);
+      
+      console.log("Flower interval started - flowers will fall infinitely!");
     }, 3000);
+
+    // Debug: Check if container exists every 2 seconds
+    setInterval(() => {
+      const cont = document.getElementById("flowers-container");
+      console.log("Container check - exists:", !!cont, "Children count:", cont ? cont.children.length : 0);
+    }, 2000);
   </script>
 
 </body>
